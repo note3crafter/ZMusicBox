@@ -1,6 +1,9 @@
 # ZMusicBox
 Play music in your server using noteblocks!
 
+# Now for Minecraft 1.16.100
+i have it testing on Altay v.3.16.1
+
 
 ## Requirements
  - The server software that you use must have working noteblock functionality (All current php server softwares)
