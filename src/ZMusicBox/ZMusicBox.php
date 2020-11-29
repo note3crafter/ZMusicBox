@@ -79,7 +79,7 @@ class ZMusicBox extends PluginBase implements Listener{
 					}
 				}else{
 					$sender->sendMessage(TextFormat::RED."Usage:/music <start|stop|next>");
-					return bool;
+					return true;
 				}
 			break;		
 		}
@@ -138,8 +138,8 @@ class ZMusicBox extends PluginBase implements Listener{
 		if (!isset($files[$rand])){
 			return false;
 		}
-		if(function_exists("iconv")){
-			$rname = iconv('gbk','UTF-8',$files[$rand]);
+		if(function_exists("icon")){
+			$rname = icon('gbk','UTF-8',$files[$rand]);
 		}else{
 			$rname = $files[$rand];
 		}
@@ -210,10 +210,11 @@ class ZMusicBox extends PluginBase implements Listener{
 						$pk->y = $block->y;
 						$pk->z = $block->z;*/
 						$pk->position = new Vector3($block->x, $block->y, $block->z);
-						$pk->volume = $type;
-						$pk->pitch = $sound;
-						$pk->unknownBool = true;
-						$pk->unknownBool2 = true;
+                        //$pk->volume = $type; //old
+                        //$pk->pitch = $sound; //old
+                        $pk->extraData = $sound; //**new changes**
+                        //$pk->unknownBool = true; //old
+                        //$pk->unknownBool2 = true; //old
 						$p->dataPacket($pk);
 					}
 				}
@@ -253,5 +254,4 @@ class MusicPlayer extends Task{
 			$this->plugin->StartNewTask();
 		}
 	}
-
 }
